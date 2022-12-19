@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+import React from 'react'
 import './App.css';
+import { Routes, Route } from 'react-router-dom'
+import Nav from './components/Nav';
+import Homepage from './pages/Homepage/Homepage'
+import Dashboard from './pages/Dashboard/Dashboard'
+import Calendar from './pages/CalendarPage/CalendarPage'
+
 
 function App() {
+  // const [user, setUser] = useState(null)
+  // look in week 11 day 2 for useState
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Nav />
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/calendar" element={<Calendar />} />
+      </Routes> 
     </div>
   );
 }
