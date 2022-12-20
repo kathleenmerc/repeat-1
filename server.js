@@ -7,6 +7,9 @@ const morgan = require ('morgan')
 // REQUIRE AND CONFIG DOTENV:
 require('dotenv').config()
 
+// CONNECT TO DATABASE:
+require('./config/database')
+
 const app = express()
 
 // MIDDLEWARE:
