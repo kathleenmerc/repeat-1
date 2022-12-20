@@ -4,6 +4,9 @@ const path = require('path')
 const favicon = require('serve-favicon')
 const morgan = require ('morgan')
 
+// REQUIRE AND CONFIG DOTENV:
+require('dotenv').config()
+
 const app = express()
 
 // MIDDLEWARE:
