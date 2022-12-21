@@ -20,17 +20,18 @@ function App(props) {
   
   return (
     <div className="App">
+      
       { user ?
-      <>
+      <>  
         <Nav />
         <Routes>
-            <Route path="/" element={<Homepage />} />
             <Route path="/dashboard/:username" element={<Dashboard />} />
             <Route path="/calendar/:username/" element={<Calendar />} />
           </Routes> 
       </>
       : 
         <Routes>
+          <Route path="/" element={<Homepage />} />
             <Route path="/login" element={<LogInPage />} />
             <Route path="/signup" element={<SignUpPage />} />
         </Routes>
