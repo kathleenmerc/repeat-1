@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { signUpService } from '../../utilities/users-service'
 
 export default function SignUpForm(props) {
 
@@ -15,9 +16,21 @@ export default function SignUpForm(props) {
     //     setError('')
     // }
 
-    const handleSubmit = (evt) => {
+    const handleSubmit = async (evt) => {
         evt.preventDefault()
-        alert(JSON.stringify(username, password, confirmPassword))
+        try {
+            const formData = { username, password }
+            delete {error}
+            delete {confirmPassword}
+
+            // The promise returned by the signUp service method will resolve to the user object included in the paylod of the JSON Web Token(JWT)
+            const user = await signUpService(formData)
+            console.log(user)
+    
+        } catch {
+            setError('Sign Up Failed - Try Again')
+        }
+        
     }
 
 
@@ -26,8 +39,8 @@ export default function SignUpForm(props) {
 
     return (
         
-        <div className="signUpForm">
-            <form autoComplete="off" onSubmit={handleSubmit}>
+        <div className="signUpForm-container">
+            <form className="signUpForm"autoComplete="off" onSubmit={handleSubmit}>
 
                 <label>Username:</label>
                 <input type="text" name="username" value={username} onChange={(evt) => setUsername(evt.target.value) } required />
