@@ -5,16 +5,18 @@ import Nav from './components/Nav';
 import Homepage from './pages/Homepage/Homepage'
 import Dashboard from './pages/Dashboard/Dashboard'
 import Calendar from './pages/CalendarPage/CalendarPage';
-import LogInPage from './pages/LogInPage/LoginPage';
+import LogInPage from './pages/LogInPage/LogInPage';
 import SignUpPage from './pages/SignUpPage/SignUpPage';
 
 
 
-function App() {
+
+function App(props) {
   // DEFINE THE USER STATE:
-  // const [user, setUser] = useState(null)
+  const [user, setUser] = useState(null)
   // use empty object for now during testing
-  const [user, setUser] = useState({})
+  // const [user, setUser] = useState({})
+
   
   return (
     <div className="App">
@@ -23,8 +25,8 @@ function App() {
         <Nav />
         <Routes>
             <Route path="/" element={<Homepage />} />
-            <Route path="/dashboard/:userId" element={<Dashboard />} />
-            <Route path="/calendar/:userId/" element={<Calendar />} />
+            <Route path="/dashboard/:username" element={<Dashboard />} />
+            <Route path="/calendar/:username/" element={<Calendar />} />
           </Routes> 
       </>
       : 
