@@ -25,7 +25,7 @@ export default function SignUpForm(props) {
 
             // The promise returned by the signUp service method will resolve to the user object included in the payload of the JSON Web Token(JWT)
             const user = await signUpService(formData)
-            console.log(user)
+            props.setUser(user)
     
         } catch {
             setError('Sign Up Failed - Try Again')

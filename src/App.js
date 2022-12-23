@@ -24,7 +24,7 @@ function App(props) {
       
       { user ?
       <>  
-        <Nav />
+        <Nav setUser={setUser}/>
         <Routes>
             <Route path="/dashboard/:username" element={<Dashboard username={user.username} />} />
             <Route path="/calendar/:username/" element={<Calendar />} />
@@ -34,7 +34,7 @@ function App(props) {
         <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/login" element={<LogInPage />} />
-            <Route path="/signup" element={<SignUpPage />} />
+            <Route path="/signup" element={<SignUpPage setUser={setUser} />} />
         </Routes>
     }
       

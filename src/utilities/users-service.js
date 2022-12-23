@@ -5,9 +5,9 @@ export async function signUpService(userData) {
     // Need to delegate the network request code to the users-api.js API module:
     const token = await usersAPI.signUpAPI(userData)
 
-    // Save the token to localStorage:
+    // Save the token to localStorage and change the userState via getUser():
     localStorage.setItem("token", token)
-    return token
+    return getUser()
 }
 
 export function getToken() {
@@ -39,3 +39,6 @@ export function getUser () {
     return token ? JSON.parse(atob(token.split('.')[1])).user : null
 }
 
+export function logOut () {
+    localStorage.removeItem('token')
+}
