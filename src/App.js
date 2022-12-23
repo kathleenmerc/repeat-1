@@ -7,13 +7,14 @@ import Dashboard from './pages/Dashboard/Dashboard'
 import Calendar from './pages/CalendarPage/CalendarPage';
 import LogInPage from './pages/LogInPage/LogInPage';
 import SignUpPage from './pages/SignUpPage/SignUpPage';
+import { getUser } from './utilities/users-service'
 
 
 
 
 function App(props) {
   // DEFINE THE USER STATE:
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(getUser())
   // use empty object for now during testing
   // const [user, setUser] = useState({})
 
@@ -25,13 +26,13 @@ function App(props) {
       <>  
         <Nav />
         <Routes>
-            <Route path="/dashboard/:username" element={<Dashboard />} />
+            <Route path="/dashboard/:username" element={<Dashboard username={user.username} />} />
             <Route path="/calendar/:username/" element={<Calendar />} />
           </Routes> 
       </>
       : 
         <Routes>
-          <Route path="/" element={<Homepage />} />
+            <Route path="/" element={<Homepage />} />
             <Route path="/login" element={<LogInPage />} />
             <Route path="/signup" element={<SignUpPage />} />
         </Routes>

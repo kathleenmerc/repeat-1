@@ -23,7 +23,7 @@ export default function SignUpForm(props) {
             delete {error}
             delete {confirmPassword}
 
-            // The promise returned by the signUp service method will resolve to the user object included in the paylod of the JSON Web Token(JWT)
+            // The promise returned by the signUp service method will resolve to the user object included in the payload of the JSON Web Token(JWT)
             const user = await signUpService(formData)
             console.log(user)
     

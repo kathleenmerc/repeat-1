@@ -5,7 +5,7 @@ const usersController = require('../../controllers/api/users')
 
 // ROUTES:
 
-// POST /api/users
+// POST - /api/users
 router.post('/', usersController.create)
 
 module.exports = router
