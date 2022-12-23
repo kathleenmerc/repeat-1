@@ -3,7 +3,7 @@ const BASE_URL = '/api/users'
 
 
 export async function signUpAPI(userData) {
-    const res = await fetch(BASE_URL, {
+    const res = await fetch(`${BASE_URL}/signup`, {
         method: 'POST',
         headers: {'Content-Type' : 'application/json'},
         body: JSON.stringify(userData)
