@@ -17,3 +17,17 @@ export async function signUpAPI(userData) {
     }
 
 }
+
+export async function logInAPI(userData) {
+    const res = await fetch (`${BASE_URL}/login`, {
+        method: 'POST',
+        headers: {'Content-Type' : 'application/json'},
+        body: JSON.stringify(userData)
+    })
+
+    if (res.ok) {
+        return res.json()
+    } else {
+        throw new Error('Invalid Log In')
+    }
+}

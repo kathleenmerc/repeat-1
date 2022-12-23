@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { logInService } from '../../utilities/users-service'
 
 export default function LogInForm(props) {
 
@@ -15,9 +16,15 @@ export default function LogInForm(props) {
     //     setError('')
     // }
 
-    const handleSubmit = (evt) => {
+    const handleSubmit = async (evt) => {
         evt.preventDefault()
-        alert(JSON.stringify(username, password, confirmPassword))
+        try {
+            const formData = { username, password }
+            const user = await logInService(formData)
+            props.setUser(user)
+        } catch {
+            setError('Log In Failed - Try Again')
+        }
     }
 
 
@@ -26,7 +33,7 @@ export default function LogInForm(props) {
 
     return (
         
-        <div className="signUpForm">
+        <div className="logInForm">
             <form autoComplete="off" onSubmit={handleSubmit}>
 
                 <label>Username:</label>
@@ -38,7 +45,7 @@ export default function LogInForm(props) {
                 <label>Confirm Password:</label>
                 <input type="password" name="confirmPassword" value={confirmPassword} onChange={(evt) => setConfirmPassword(evt.target.value)} required />
 
-                <button type="submit" disabled={disable}>SIGN UP</button>
+                <button type="submit" disabled={disable}>LOG IN</button>
             </form>
             <Link to="/signup"><button>Don't have an account? Sign up here.</button></Link>
 

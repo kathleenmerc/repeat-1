@@ -5,7 +5,7 @@ export default function LogInPage (props) {
     return (
         <div className="logIn">
             <h1>LogIn page</h1>
-            <LogInForm />
+            <LogInForm setUser={props.setUser}/>
         </div>
     )
 }

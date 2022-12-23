@@ -10,6 +10,18 @@ export async function signUpService(userData) {
     return getUser()
 }
 
+
+export async function logInService(userData) {
+    const token = await usersAPI.logInAPI(userData)
+
+    localStorage.setItem("token", token)
+    return getUser()
+
+
+}
+
+
+
 export function getToken() {
     // Retrieve token from localStorage:
     const token = localStorage.getItem("token")

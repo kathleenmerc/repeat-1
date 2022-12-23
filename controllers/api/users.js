@@ -1,8 +1,10 @@
 const User = require('../../models/user')
 const jwt = require('jsonwebtoken')
+const bcrypt = require('bcrypt')
 
 module.exports = {
-    create
+    create,
+    login
 }
 
 // ADD NEW USER TO DATABASE AND CREATE JWT TOKEN:
@@ -12,6 +14,29 @@ async function create (req, res) {
 
         const token = createJWT(user)
         res.json(token)
+    } catch (err) {
+        res.status(400).json(err)
+    }
+}
+
+
+async function login (req, res) {
+    try {
+        // Find the user by finding username in database:
+        const user = await User.findOne({ username: req.body.username })
+
+        // If user does not exist, then throw error:
+        if (!user) throw new Error()
+
+        // Comparing the inputted password to the hashed password in the database:
+        const match = await bcrypt.compare(req.body.password, user.password)
+
+        // If the passwrods do not match, then throw error:
+        if (!match) throw new Error()
+
+        // If the username and password match, then create a new token:
+        res.json(createJWT(user))
+
     } catch (err) {
         res.status(400).json(err)
     }
