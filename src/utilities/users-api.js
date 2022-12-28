@@ -49,18 +49,23 @@ export function checkTokenAPI() {
 
 // HELPER FUNCTIONS:
 async function sendRequest (url, method = 'GET', payload = null) {
+    
+    // If the request has payload, then add headers and body in the response:
     const options = { method }
     if (payload) {
         options.headers = { 'Content-Type' : 'application/json' }
         options.body = JSON.stringify(payload)
     }
 
+    // Check to see if there is a valid token: 
+    // If there is a token, then add the token to the request Authorization header
     const token = getToken()
     if (token) {
         options.headers = options.headers || {}
         options.headers.Authorization = `Bearer ${token}`
     }
 
+    // First fetch, then if the response is good, then return res.json:
     const res = await fetch(url, options)
     if (res.ok) return res.json
     throw new Error('Bad Request')
