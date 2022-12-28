@@ -4,7 +4,8 @@ const bcrypt = require('bcrypt')
 
 module.exports = {
     create,
-    login
+    login,
+    checkToken
 }
 
 // ADD NEW USER TO DATABASE AND CREATE JWT TOKEN:
@@ -40,6 +41,13 @@ async function login (req, res) {
     } catch (err) {
         res.status(400).json(err)
     }
+}
+
+
+function checkToken (req, res) {
+    console.log('req.user', req.user)
+    console.log('req.exp', req.exp)
+    res.json(req.exp)
 }
 
 // HELPER FUNCTIONS:

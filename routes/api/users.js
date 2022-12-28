@@ -13,3 +13,6 @@ router.post('/signup', usersController.create)
 router.post('/login', usersController.login)
 
 module.exports = router
+
+// GET - api/users/check-token
+router.get('/check-token', usersController.checkToken)

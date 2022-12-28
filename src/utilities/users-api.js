@@ -43,7 +43,7 @@ export function logInAPI(userData) {
     return sendRequest(`${BASE_URL}/login`,'POST', userData)
 }
 
-export function checkTokenAPI() {
+export function checkTokenAPI(userData) {
     return sendRequest(`${BASE_URL}/check-token`)
 }
 
