@@ -1,3 +1,4 @@
+import GoalsList from '../../components/GoalsList/GoalsList'
 import { checkToken } from '../../utilities/users-service'
 
 export default function Dashboard (props) {
@@ -15,6 +16,7 @@ export default function Dashboard (props) {
             <h1>dashboard</h1>
             <h1>Welcome {props.username}!</h1>
             <button onClick={handleCheckToken}>Check for expiration</button>
+            <GoalsList />
         </div>
     )
 }

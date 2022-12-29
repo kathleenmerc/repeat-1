@@ -55,8 +55,8 @@ export function logOut () {
     localStorage.removeItem('token')
 }
 
-
 export function checkToken () {
     return usersAPI.checkTokenAPI()
             .then(dateString => new Date(dateString))
 }
+

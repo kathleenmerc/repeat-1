@@ -47,6 +47,9 @@ export function checkTokenAPI(userData) {
     return sendRequest(`${BASE_URL}/check-token`)
 }
 
+
+
+
 // HELPER FUNCTIONS:
 async function sendRequest (url, method = 'GET', payload = null) {
     

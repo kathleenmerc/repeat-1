@@ -8,13 +8,14 @@ import Calendar from './pages/CalendarPage/CalendarPage';
 import LogInPage from './pages/LogInPage/LogInPage';
 import SignUpPage from './pages/SignUpPage/SignUpPage';
 import { getUser } from './utilities/users-service'
-
+//import { setGoal } from './components/GoalForm/GoalForm'
 
 
 
 function App(props) {
   // DEFINE THE USER STATE:
   const [user, setUser] = useState(getUser())
+  const [goal, setGoal] = useState({})
   // use empty object for now during testing
   // const [user, setUser] = useState({})
 
@@ -26,7 +27,7 @@ function App(props) {
       <>  
         <Nav setUser={setUser}/>
         <Routes>
-            <Route path="/dashboard/:username" element={<Dashboard username={user.username} />} />
+            <Route path="/dashboard/:username" element={<Dashboard username={user.username}  setGoal={setGoal} />} />
             <Route path="/calendar/:username" element={<Calendar />} />
           </Routes> 
       </>

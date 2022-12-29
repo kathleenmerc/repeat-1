@@ -23,11 +23,12 @@ app.use(require('./config/checkToken'))
 
 // MOUNT API ROUTES:
 app.use('/api/users', require('./routes/api/users'))
+app.use('/api/goals', require('./routes/api/goals'))
 
 
 // CATCH ALL ROUTE:
 app.get('/*', function (req, res) {
-    res.sendFile(path.join(__dirname, 'build', index.html))
+    res.sendFile(path.join(__dirname, 'build', 'index.html'))
 })
 
 
