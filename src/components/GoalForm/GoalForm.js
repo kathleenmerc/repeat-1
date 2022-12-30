@@ -68,7 +68,7 @@ export default function GoalForm(props) {
 
                 
 
-                <button type="add">add goal</button>
+                <button type="submit">add goal</button>
             </form>
         </div>
         

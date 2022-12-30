@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { signUpService } from '../../utilities/users-service'
+import styles from './SignUpForm.module.css'
 
 export default function SignUpForm(props) {
 
@@ -39,8 +40,8 @@ export default function SignUpForm(props) {
 
     return (
         
-        <div className="signUpForm-container">
-            <form className="signUpForm"autoComplete="off" onSubmit={handleSubmit}>
+        <div className={styles.signUpFormContainer}>
+            <form className={styles.signUpForm} autoComplete="off" onSubmit={handleSubmit}>
 
                 <label>Username:</label>
                 <input type="text" name="username" value={username} onChange={(evt) => setUsername(evt.target.value) } required />
@@ -51,9 +52,9 @@ export default function SignUpForm(props) {
                 <label>Confirm Password:</label>
                 <input type="password" name="confirmPassword" value={confirmPassword} onChange={(evt) => setConfirmPassword(evt.target.value)} required />
 
-                <button type="submit" disabled={disable}>SIGN UP</button>
+                <button type="submit" disabled={disable} className={styles.signUpBtn}>SIGN UP</button>
             </form>
-            <Link to="/login"><button>Already have an account? Log in here.</button></Link>
+            <Link to="/login"><button className={styles.linkBtn}>Already have an account? Log in here.</button></Link>
 
             <p className="error-message">{error}</p>
         </div>
